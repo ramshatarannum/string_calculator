@@ -1,9 +1,15 @@
 class StringCalculator
 	def add(number)
-		#for emepty string
+		#for empty string
 		return 0 if number == ""
 
 		special_character = ','
+
+		#for different delimiters
+		result = number.gsub!(/\/\/|;/, special_character)
+
+		#handling new line
+		result = number.gsub!("\n", special_character)
 
 		#to handle single number in string 
 		result = number.split(special_character).map(&:to_i)

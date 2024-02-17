@@ -25,4 +25,15 @@ describe StringCalculator do
 		end
 	end
 
+	context "when new line is between the number" do
+		it "allow new line and add numbers" do 
+			expect(@calculator.add("1\n2,3")).to eq(6)
+		end
+	end
+
+	context "if there are multiple delimiters in string" do
+		it "should handle all delimiters and give sum of numbers" do 
+			expect(@calculator.add("//;\n1;2")).to eql(3)
+		end
+	end
 end
