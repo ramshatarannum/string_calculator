@@ -14,11 +14,14 @@ class StringCalculator
 		#to handle single number in string 
 		result = number.split(special_character).map(&:to_i)
 
-		#if number is negative
-		negatives = result.select { |num| num.negative? }
-		raise ArgumentError, "negative numbers not allowed #{negatives.join(',')}" unless negatives.empty?
-
+		check_for_negative(result)
 		result.sum
 	end
+
+	def check_for_negative(result)
+		negatives = result.select { |num| num.negative? }
+		raise ArgumentError, "negative numbers not allowed #{negatives.join(',')}" unless negatives.empty?
+	end
+
 end
 
